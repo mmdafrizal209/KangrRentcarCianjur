@@ -5,7 +5,7 @@ import { Users, Fuel, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-re
 
 const armada = [
   {
-    img: '/images/avanza.jpg',
+    img: '/images/avanza.png',
     name: 'Toyota Avanza',
     type: 'MPV',
     kapasitas: '7 Penumpang',

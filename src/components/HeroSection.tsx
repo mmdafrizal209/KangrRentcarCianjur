@@ -18,7 +18,7 @@ export default function HeroSection() {
       style={{ background: 'linear-gradient(135deg, #080808 0%, #1a1a1a 45%, #0a2419 100%)' }}
     >
       {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#00B894]/8 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#00B894]/5 rounded-full blur-[100px]" />
         <div
@@ -37,10 +37,12 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16 lg:pt-32 lg:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16 lg:pt-32 lg:pb-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 relative z-20 pointer-events-none">
+            <div className="pointer-events-auto">
+
             {/* Badge */}
             <motion.div
               variants={fadeUp(0.1)}
@@ -130,6 +132,7 @@ export default function HeroSection() {
                 <span className="text-gray-300 text-sm font-medium">50+ Unit Armada</span>
               </div>
             </motion.div>
+            </div>
           </div>
 
           {/* Right — Car Image */}
@@ -137,51 +140,21 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 80, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center lg:scale-[1.9] lg:translate-x-4 lg:translate-y-12 mt-12 lg:mt-0"
           >
-            <div className="absolute inset-0 bg-[#00B894]/10 rounded-full blur-3xl scale-75" />
+            <div className="absolute inset-0 bg-[#00B894]/20 rounded-full blur-[100px] scale-90" />
 
-            <motion.img
-              src="/images/hero-car.png"
-              alt="Armada Kang Rentcar Cianjur"
-              className="relative z-10 w-full max-w-lg lg:max-w-full drop-shadow-2xl"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            {/* Floating Badge: Rating */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, type: 'spring', stiffness: 200 }}
-              className="absolute top-8 left-4 sm:left-0 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
-              style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              <div className="w-10 h-10 bg-yellow-500/20 rounded-xl flex items-center justify-center">
-                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              </div>
-              <div>
-                <div className="text-white font-bold text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>4.9 / 5.0</div>
-                <div className="text-gray-400 text-xs">Rating Pelanggan</div>
-              </div>
-            </motion.div>
-
-            {/* Floating Badge: Armada */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.0, type: 'spring', stiffness: 200 }}
-              className="absolute bottom-8 right-4 sm:right-0 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
-              style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              <div className="w-10 h-10 bg-[#00B894]/20 rounded-xl flex items-center justify-center">
-                <Car className="w-5 h-5 text-[#00B894]" />
-              </div>
-              <div>
-                <div className="text-white font-bold text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>50+ Unit</div>
-                <div className="text-gray-400 text-xs">Armada Tersedia</div>
-              </div>
-            </motion.div>
+            {/* Car image with true transparency */}
+            <div className="w-full flex justify-end">
+              <motion.img
+                src="/images/avanza-nobg.png"
+                alt="Armada Kang Rentcar Cianjur"
+                className="w-[110%] max-w-none drop-shadow-2xl"
+                style={{ filter: 'brightness(0.85)' }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
           </motion.div>
         </div>
       </div>
