@@ -72,17 +72,7 @@ export default function HeroSection() {
               <p className="text-lg sm:text-xl text-gray-300 font-light leading-relaxed max-w-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Perjalanan nyaman, aman, dan hemat bersama armada terbaik kami.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {['💰 Mulai 250rb/hari', '⏰ Pelayanan 24 Jam', '🏠 Antar ke Rumah'].map((item) => (
-                  <span
-                    key={item}
-                    className="text-sm font-medium text-gray-200 bg-white/5 border border-white/10 rounded-full px-4 py-1.5"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+
             </motion.div>
 
             {/* CTA Buttons */}

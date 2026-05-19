@@ -8,7 +8,6 @@ const pakets = [
     duration: '4 Hari',
     price: '250.000',
     priceNote: '/hari',
-    bonus: 'Free 1x Cuci Mobil',
     features: [
       'Bebas pilih armada',
       'Dengan atau tanpa sopir',
@@ -25,7 +24,6 @@ const pakets = [
     duration: '7 Hari',
     price: '230.000',
     priceNote: '/hari',
-    bonus: 'Free 2x Cuci Mobil',
     features: [
       'Bebas pilih armada',
       'Dengan atau tanpa sopir',
@@ -43,7 +41,6 @@ const pakets = [
     duration: '10 Hari',
     price: '210.000',
     priceNote: '/hari',
-    bonus: 'Free 4x Cuci Mobil',
     features: [
       'Bebas pilih armada',
       'Dengan atau tanpa sopir',
@@ -126,10 +123,7 @@ export default function PaketSection() {
                     <span className="text-gray-400 text-sm mb-1">{paket.priceNote}</span>
                   </div>
 
-                  {/* Bonus badge */}
-                  <div className="inline-flex items-center gap-2 bg-[#00B894]/15 border border-[#00B894]/30 rounded-xl px-4 py-2">
-                    <span className="text-[#00B894] text-sm font-bold">🎁 {paket.bonus}</span>
-                  </div>
+
                 </div>
 
                 {/* Divider */}

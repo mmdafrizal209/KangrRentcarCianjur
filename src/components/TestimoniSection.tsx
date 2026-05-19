@@ -8,7 +8,7 @@ const testimoni = [
     role: 'Pengusaha',
     rating: 5,
     comment: 'Pelayanan Kang Rentcar luar biasa! Mobil selalu bersih dan terawat. Sudah 3 kali sewa, selalu puas. Harga terjangkau dan sopir ramah. Highly recommended buat warga Cianjur!',
-    avatar: '👨‍💼',
+    avatar: '/images/gambar 1.jpg',
     lokasi: 'Cianjur Kota',
   },
   {
@@ -16,7 +16,7 @@ const testimoni = [
     role: 'Ibu Rumah Tangga',
     rating: 5,
     comment: 'Pas mau nikahan anaknya, langsung hubungi Kang Rentcar. Mobilnya bagus, sopirnya tepat waktu banget. Harganya juga lebih murah dari tempat lain. Pokoknya recommended!',
-    avatar: '👩‍🦱',
+    avatar: '/images/gambaar 2.jpg',
     lokasi: 'Pacet, Cianjur',
   },
   {
@@ -24,7 +24,7 @@ const testimoni = [
     role: 'Pegawai Swasta',
     rating: 5,
     comment: 'Sewa mingguan buat perjalanan dinas ke Jakarta. Prosesnya gampang banget, cukup chat WA langsung beres. Mobilnya nyaman, AC dingin. Pasti balik lagi nih.',
-    avatar: '👨‍🍳',
+    avatar: '/images/gambar 3.jpg',
     lokasi: 'Sukanagara, Cianjur',
   },
   {
@@ -32,7 +32,7 @@ const testimoni = [
     role: 'Guru SMA',
     rating: 5,
     comment: 'Pakai paket wisata ke Puncak sama keluarga. Sopirnya hafal jalan dan sangat ramah sama anak-anak. Harganya reasonable banget, jauh lebih murah dari travel online. Mantap!',
-    avatar: '👩‍🏫',
+    avatar: '/images/gambar 4.jpg',
     lokasi: 'Warungkondang, Cianjur',
   },
   {
@@ -40,7 +40,7 @@ const testimoni = [
     role: 'Mahasiswa',
     rating: 5,
     comment: 'Sewa untuk acara camping bareng teman. Avanzanya muat banyak barang, kondisinya masih bagus. Harganya paling murah se-Cianjur, no rekayasa! Responsnya cepet banget.',
-    avatar: '👨‍🎓',
+    avatar: '/images/gambar 5.jpg',
     lokasi: 'Cibeber, Cianjur',
   },
   {
@@ -48,7 +48,7 @@ const testimoni = [
     role: 'Pedagang',
     rating: 5,
     comment: 'Sudah berlangganan lebih dari 2 tahun. Kang Rentcar selalu bisa diandalkan. Kalau ada keperluan mendadak pun dibantu. Semoga terus berkembang dan semakin bagus pelayanannya.',
-    avatar: '👩‍🦳',
+    avatar: '/images/gambar 6.jpg',
     lokasi: 'Cugenang, Cianjur',
   },
 ];
@@ -183,9 +183,11 @@ function TestimoniCard({ t }: { t: typeof testimoni[0] }) {
 
       {/* Author */}
       <div className="flex items-center gap-3">
-        <div className="w-11 h-11 bg-[#00B894]/15 rounded-full flex items-center justify-center text-xl border border-[#00B894]/20">
-          {t.avatar}
-        </div>
+        <img
+          src={t.avatar}
+          alt={t.name}
+          className="w-11 h-11 rounded-full object-cover border border-[#00B894]/20"
+        />
         <div>
           <div className="text-white font-semibold text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {t.name}
