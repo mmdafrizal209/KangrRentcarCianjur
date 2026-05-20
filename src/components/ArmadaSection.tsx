@@ -1,11 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Users, Fuel, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 
 const armada = [
   {
-    img: '/images/avanza.png',
+    img: 'images/avanza.png',
     name: 'Toyota Avanza',
     type: 'MPV',
     kapasitas: '7 Penumpang',
@@ -15,7 +15,7 @@ const armada = [
     badge: null,
   },
   {
-    img: '/images/xenia.jpg',
+    img: 'images/xenia.jpg',
     name: 'Daihatsu Xenia',
     type: 'MPV',
     kapasitas: '7 Penumpang',
@@ -25,7 +25,7 @@ const armada = [
     badge: null,
   },
   {
-    img: '/images/rocky.jpg',
+    img: 'images/rocky.jpg',
     name: 'Daihatsu Rocky',
     type: 'Compact SUV',
     kapasitas: '5 Penumpang',
@@ -35,7 +35,7 @@ const armada = [
     badge: '🔥 Favorit',
   },
   {
-    img: '/images/innova.jpg',
+    img: 'images/innova.jpg',
     name: 'Toyota Innova',
     type: 'MPV Premium',
     kapasitas: '7 Penumpang',
@@ -45,7 +45,7 @@ const armada = [
     badge: '⭐ Premium',
   },
   {
-    img: '/images/hrv.jpg',
+    img: 'images/hrv.jpg',
     name: 'Honda HR-V',
     type: 'SUV',
     kapasitas: '5 Penumpang',
@@ -60,7 +60,37 @@ export default function ArmadaSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [vehicles, setVehicles] = useState(armada);
 
+  useEffect(() => {
+    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api/vehicles'
+      : '/api/vehicles';
+
+    fetch(apiUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch');
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          const formatted = data.map((car: any) => ({
+            img: car.img.startsWith('/') ? car.img.substring(1) : car.img,
+            name: car.name,
+            type: car.type,
+            kapasitas: car.kapasitas,
+            bbm: car.bbm,
+            harga: car.harga,
+            tersedia: car.tersedia == 1 || car.tersedia === true || car.tersedia === '1',
+            badge: car.badge || null,
+          }));
+          setVehicles(formatted);
+        }
+      })
+      .catch((err) => {
+        console.warn('Using fallback hardcoded fleet:', err);
+      });
+  }, []);
 
   const scroll = (dir: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -111,7 +141,7 @@ export default function ArmadaSection() {
             className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {armada.map((car, index) => (
+            {vehicles.map((car, index) => (
               <motion.div
                 key={car.name}
                 initial={{ opacity: 0, x: 40 }}
@@ -128,7 +158,7 @@ export default function ArmadaSection() {
 
         {/* Desktop Grid */}
         <div className="hidden lg:grid grid-cols-3 xl:grid-cols-5 gap-6">
-          {armada.map((car, index) => (
+          {vehicles.map((car, index) => (
             <motion.div
               key={car.name}
               initial={{ opacity: 0, y: 40 }}

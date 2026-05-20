@@ -1,48 +1,43 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Car, Calendar, Plane, Building, Heart, Compass } from 'lucide-react';
 
 const services = [
   {
-    emoji: '🚗',
+    icon: <Car className="w-6 h-6 text-[#00B894]" />,
     title: 'Rental Harian Lepas Kunci',
     desc: 'Nikmati kebebasan berkendara dengan paket harian. Sewa kendaraan dengan atau tanpa sopir sesuai kebutuhan Anda.',
     color: '#00B894',
   },
   {
-    emoji: '📅',
+    icon: <Calendar className="w-6 h-6 text-[#00B894]" />,
     title: 'Rental Mingguan / Bulanan',
     desc: 'Hemat lebih banyak dengan paket jangka panjang. Ideal untuk kebutuhan bisnis atau perjalanan extended trip.',
-    color: '#0984e3',
+    color: '#00B894',
   },
   {
-    emoji: '✈️',
+    icon: <Plane className="w-6 h-6 text-[#00B894]" />,
     title: 'Antar Jemput Bandara / Stasiun',
     desc: 'Layanan jemput & antar ke Bandara Soekarno-Hatta, Halim, Stasiun Cianjur, dan Bogor tepat waktu.',
-    color: '#6c5ce7',
+    color: '#00B894',
   },
   {
-    emoji: '🏢',
+    icon: <Building className="w-6 h-6 text-[#00B894]" />,
     title: 'Corporate Rental',
     desc: 'Solusi transportasi profesional untuk perusahaan Anda. Fleet management dengan layanan premium dan kontrak fleksibel.',
-    color: '#e17055',
+    color: '#00B894',
   },
   {
-    emoji: '💒',
+    icon: <Heart className="w-6 h-6 text-[#00B894]" />,
     title: 'Wedding Car',
     desc: 'Jadikan momen pernikahan Anda semakin berkesan dengan armada mewah dan dekorasi eksklusif pilihan kami.',
-    color: '#fd79a8',
+    color: '#00B894',
   },
   {
-    emoji: '🌴',
+    icon: <Compass className="w-6 h-6 text-[#00B894]" />,
     title: 'Paket Wisata',
     desc: 'Eksplorasi keindahan alam Cianjur dan sekitarnya dengan guide berpengalaman dan kendaraan nyaman.',
-    color: '#00cec9',
-  },
-  {
-    emoji: '🚨',
-    title: 'Layanan Darurat',
-    desc: 'Kendaraan mogok? Butuh mobil pengganti segera? Tim kami siap 24 jam untuk situasi darurat Anda.',
-    color: '#fdcb6e',
+    color: '#00B894',
   },
 ];
 
@@ -80,9 +75,7 @@ export default function LayananSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
-              className={`group relative p-6 rounded-2xl border border-white/5 cursor-pointer overflow-hidden card-hover ${
-                index === 6 ? 'sm:col-span-2 lg:col-span-1' : ''
-              }`}
+              className="group relative p-6 rounded-2xl border border-white/5 cursor-pointer overflow-hidden card-hover"
               style={{ background: 'rgba(255,255,255,0.03)' }}
               whileHover={{ y: -8 }}
             >
@@ -98,10 +91,10 @@ export default function LayananSection() {
               />
 
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-5 transition-all duration-300 group-hover:scale-110"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
                 style={{ background: `${service.color}20`, border: `1px solid ${service.color}30` }}
               >
-                {service.emoji}
+                {service.icon}
               </div>
 
               <h3
