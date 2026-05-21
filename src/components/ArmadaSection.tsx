@@ -72,16 +72,22 @@ export default function ArmadaSection() {
       })
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          const formatted = data.map((car: any) => ({
-            img: car.img.startsWith('/') ? car.img.substring(1) : car.img,
-            name: car.name,
-            type: car.type,
-            kapasitas: car.kapasitas,
-            bbm: car.bbm,
-            harga: car.harga,
-            tersedia: car.tersedia == 1 || car.tersedia === true || car.tersedia === '1',
-            badge: car.badge || null,
-          }));
+          const formatted = data.map((car: any) => {
+            let img = car.img || '';
+            if (img && !img.startsWith('http://') && !img.startsWith('https://') && !img.startsWith('data:')) {
+              img = img.startsWith('/') ? img : '/' + img;
+            }
+            return {
+              img,
+              name: car.name,
+              type: car.type,
+              kapasitas: car.kapasitas,
+              bbm: car.bbm,
+              harga: car.harga,
+              tersedia: car.tersedia == 1 || car.tersedia === true || car.tersedia === '1',
+              badge: car.badge || null,
+            };
+          });
           setVehicles(formatted);
         }
       })
