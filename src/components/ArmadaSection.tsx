@@ -63,9 +63,7 @@ export default function ArmadaSection() {
   const [vehicles, setVehicles] = useState(armada);
 
   useEffect(() => {
-    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:5000/api/vehicles'
-      : '/api/vehicles';
+    const apiUrl = 'https://sewa-admin-api.vercel.app/api/vehicles';
 
     fetch(apiUrl)
       .then((res) => {
